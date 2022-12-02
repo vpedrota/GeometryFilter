@@ -1,0 +1,25 @@
+*.env 
+__pycache__/
+data/
+.DS_Store
+*.csv
+*.csv
+*.json
+
+
+#Ignore pytest output
+.pytest_cache/
+
+#Ignore coverage output
+.coverage
+htmlcov/
+#Allow test csv and json files to be used for testing
+!tests/test.csv
+!tests/test-sensor-data.json
+
+#Ignore VS Code config
+.classpath
+.project
+.settings/
+bin/
+build/
