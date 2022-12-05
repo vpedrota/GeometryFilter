@@ -104,6 +104,22 @@ class DBConnection:
         self._cur.execute(
             sql.SQL("CREATE EXTENSION IF NOT EXISTS postgis"))
         self._conn.commit()
+        
+
+
+    def isValid(self, geometry):
+        """
+        Verifica se a geometria inserida é valida utilizando a função IsValid() do Postgis.
+
+        Args: None
+           
+        Returns: None (since commits execution result to database)
+        """
+
+        self._cur.execute(
+            sql.SQL("SELECT ST_IsValid(ST_GeomFromGeoJSON('{}')) As good_line".format(geometry)))
+        self._conn.commit()
+        return json.dumps(self._cur.fetchall()[0][0])
     
 
 
